@@ -54,7 +54,7 @@ function _overseer_install() {
     echo "Dependencies installed"
 
     echo "Building overseerr"
-    yarn --cwd ~/overseerr build >> "$log" 2>&1 || {
+    NODE_OPTIONS="--max-old-space-size=10240" yarn --cwd ~/overseerr build >> "$log" 2>&1 || {
         echo "Failed to build overseerr sqlite"
         exit 1
     }
